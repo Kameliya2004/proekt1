@@ -1,0 +1,79 @@
+private Product_Context productContext = new Product_Context();
+
+        public List<Product> GetAll()
+        {
+            using (productContext = new Product_Context())
+            {
+                List<Product> listProducts = productContext.Products.ToList();
+                return listProducts;
+            }
+
+        }
+
+        public Product Get(int id)
+        {
+            using (productContext = new Product_Context())
+            {
+                Product buffer = productContext.Products.Find(id);
+                return buffer;
+            }
+        }
+
+        public void Add(Product product)
+        {
+            using (productContext = new Product_Context())
+            {
+                productContext.Products.Add(product);
+                productContext.SaveChanges();
+            }
+        }
+
+        public void Update(Product product)
+        {
+            using (productContext = new Product_Context())
+            {
+
+                var item = productContext.Products.Find(product.Id);
+                if (item != null)
+                {
+                    productContext.Entry(item).CurrentValues.SetValues(product);
+                    productContext.SaveChanges();
+                }
+
+            }
+        }
+
+        private void Delete()
+        {
+            Console.WriteLine("Enter");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public void Delete(int id)
+        {
+            using (productContext = new Product_Context())
+            {
+                var product = productContext.Products.Find(id);
+                if (product != null)
+                {
+                    productContext.Products.Remove(product);
+                    productContext.SaveChanges();
+                }
+            }
+        }
+    }
+}
+}  

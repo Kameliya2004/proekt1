@@ -9,7 +9,13 @@ namespace PROEkT2.Business
     public class DishTypeLogic
     {
        private Dishes_Context dishesDbContext = new Dishes_Context();
-
-
+        public List<Dishes_Type> GetDishesType()
+        {
+            return dishesDbContext.Dishes_Types.ToList();
+        }
+        public string GetDishesTypeById(int id)
+        {
+            return dishesDbContext.Dishes_Types.Find(id).Name;
+        }
     }
 }

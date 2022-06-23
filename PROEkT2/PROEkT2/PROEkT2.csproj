@@ -81,6 +81,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206220648293_init.resx">
       <DependentUpon>202206220648293_init.cs</DependentUpon>
     </EmbeddedResource>
